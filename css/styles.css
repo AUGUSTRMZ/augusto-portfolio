@@ -252,11 +252,37 @@ html[data-theme="dark"] .sun { opacity: 0; transform: rotate(40deg) scale(.5); }
 .capability-card > p { max-width: 570px; margin: 0 0 28px; color: var(--muted); line-height: 1.65; }
 .skill-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
 .skill-pills span { padding: 8px 11px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface-soft); color: var(--muted); font-size: .76rem; font-weight: 600; }
-.security-card { background: #102019; color: #f3f8f5; border-color: rgba(255,255,255,.08); }
-.security-card::after { background: radial-gradient(circle, rgba(91, 239, 160, .2), transparent 68%); }
-.security-card .capability-index { color: #65e5a4; }
-.security-card > p { color: #a9bcb2; }
-.security-card .skill-pills span { background: rgba(255,255,255,.055); border-color: rgba(255,255,255,.12); color: #c8d8cf; }
+.security-card {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--line);
+  transition:
+    background .3s ease,
+    color .3s ease,
+    border-color .3s ease;
+}
+
+.security-card::after {
+  background: radial-gradient(
+    circle,
+    rgba(91, 239, 160, .2),
+    transparent 68%
+  );
+}
+
+.security-card .capability-index {
+  color: var(--accent);
+}
+
+.security-card > p {
+  color: var(--muted);
+}
+
+.security-card .skill-pills span {
+  background: var(--surface-soft);
+  border-color: var(--line);
+  color: var(--muted);
+}
 .language-strip { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 10px; padding: 20px; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); }
 .language-strip span { flex: 1 1 auto; min-width: 90px; text-align: center; padding: 10px 13px; color: var(--muted); font: 600 .78rem "Manrope"; }
 
