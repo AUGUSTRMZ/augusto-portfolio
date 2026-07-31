@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portafolio de Augusto Ramírez: desarrollo web e iOS, chatbots, automatización, producto y ciberseguridad.">
+  <meta name="theme-color" content="#f6f8f7">
+  <title>Augusto Ramírez — Software Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <header class="site-header" id="inicio">
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <span class="brand-mark">A</span>
+        <span>Augusto<span class="brand-dot">.</span></span>
+      </a>
+
+      <button class="menu-button" id="menuButton" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#proyectos">Proyectos</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#tecnologias">Tecnologías</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+        <span class="sun">☼</span>
+        <span class="moon">◐</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <div class="status"><span></span> Disponible para nuevos proyectos</div>
+          <p class="eyebrow">Software Developer · Product · Cybersecurity</p>
+          <h1>Construyo productos digitales que convierten procesos en <em>experiencias claras.</em></h1>
+          <p class="hero-text">
+            Desarrollo aplicaciones web y móviles, automatizaciones, chatbots y soluciones
+            seguras enfocadas en resolver problemas reales de negocio.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#proyectos">Explorar proyectos <span>↘</span></a>
+            <a class="button secondary" href="https://wa.me/528991202450" target="_blank" rel="noopener">Hablemos</a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal delay-1" aria-label="Vista abstracta de proyectos digitales">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="code-card card-one">
+            <div class="card-top"><span></span><span></span><span></span></div>
+            <div class="code-line wide"></div>
+            <div class="code-line"></div>
+            <div class="code-line short"></div>
+            <div class="metric-row">
+              <div><strong>04</strong><small>Proyectos</small></div>
+              <div><strong>∞</strong><small>Ideas</small></div>
+            </div>
+          </div>
+          <div class="floating-chip chip-one">SwiftUI</div>
+          <div class="floating-chip chip-two">Cybersecurity</div>
+          <div class="floating-chip chip-three">AI / Bots</div>
+          <div class="monogram">AR</div>
+        </div>
+      </div>
+
+      <div class="container hero-footer reveal delay-2">
+        <p>Herramientas y tecnologías</p>
+        <div class="tech-marquee" aria-label="Tecnologías">
+          <span>Python</span><span>Django</span><span>Swift</span><span>SwiftUI</span>
+          <span>C++</span><span>C</span><span>JavaScript</span><span>Kali Linux</span><span>REST APIs</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects" id="proyectos">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow">Trabajo seleccionado</p>
+            <h2>Proyectos con propósito, no solo pantallas.</h2>
+          </div>
+          <p>
+            Una selección de plataformas en producción y conceptos digitales desarrollados
+            para explorar soluciones comerciales.
+          </p>
+        </div>
+
+        <div class="project-list">
+          <article class="project-card featured reveal">
+            <div class="project-copy">
+              <div class="project-meta">
+                <span class="project-number">01</span>
+                <span class="project-type real">Proyecto real</span>
+              </div>
+              <h3>WOS Control Operativo</h3>
+              <p>
+                Plataforma web para coordinar empleados, sucursales, áreas, actividades,
+                incidencias y trazabilidad operativa desde paneles adaptados a cada rol.
+              </p>
+              <div class="tags">
+                <span>Django</span><span>DRF</span><span>PostgreSQL</span>
+                <span>Supabase</span><span>JavaScript</span><span>JWT</span>
+              </div>
+              <button class="text-link project-open" data-project="wos">Ver caso de estudio <span>↗</span></button>
+            </div>
+            <div class="project-preview wos-preview">
+              <div class="browser">
+                <div class="browser-bar"><i></i><i></i><i></i><small>wos / panel-operativo</small></div>
+                <div class="wos-app">
+                  <aside>
+                    <b>WOS</b>
+                    <span class="active"></span><span></span><span></span><span></span>
+                  </aside>
+                  <div class="wos-main">
+                    <div class="mini-head"><div></div><div></div></div>
+                    <div class="stats"><i></i><i></i><i></i></div>
+                    <div class="dashboard-grid"><div></div><div></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-copy">
+              <div class="project-meta">
+                <span class="project-number">02</span>
+                <span class="project-type real">Proyecto real</span>
+              </div>
+              <h3>HabiTree</h3>
+              <p>
+                Aplicación móvil de hábitos sostenibles con misiones, recompensas y
+                progresión gamificada para impulsar acciones positivas en la vida diaria.
+              </p>
+              <div class="tags">
+                <span>Project Management</span><span>Product</span>
+                <span>UX / UI</span><span>Flutter</span>
+              </div>
+              <button class="text-link project-open" data-project="habitree">Ver caso de estudio <span>↗</span></button>
+            </div>
+            <div class="project-preview habitree-preview">
+              <div class="phone phone-back">
+                <div class="phone-screen">
+                  <div class="tree-circle">✦</div>
+                  <div class="phone-lines"><i></i><i></i><i></i></div>
+                </div>
+              </div>
+              <div class="phone phone-front">
+                <div class="phone-screen">
+                  <small>Buenos días, Augusto</small>
+                  <h4>Tu bosque</h4>
+                  <div class="progress-ring"><span>72%</span></div>
+                  <div class="mission"><i></i><div><b>Misión diaria</b><small>Reduce tu consumo</small></div></div>
+                  <div class="mission"><i></i><div><b>Racha activa</b><small>7 días consecutivos</small></div></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-copy">
+              <div class="project-meta">
+                <span class="project-number">03</span>
+                <span class="project-type concept">Concepto digital</span>
+              </div>
+              <h3>Lumbre Restaurante</h3>
+              <p>
+                Experiencia web para un restaurante de cocina mexicana contemporánea,
+                con presentación de marca, menú interactivo y solicitud de reservaciones.
+              </p>
+              <div class="tags">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                <span>Responsive</span><span>Branding</span>
+              </div>
+              <button class="text-link project-open" data-project="lumbre">Ver concepto <span>↗</span></button>
+            </div>
+            <div class="project-preview lumbre-preview">
+              <div class="lumbre-copy">
+                <small>Cocina mexicana contemporánea</small>
+                <h4>Donde el fuego<br><em>cuenta historias.</em></h4>
+                <span>Descubrir el menú ↗</span>
+              </div>
+              <div class="fire-orb"></div>
+              <div class="menu-card"><small>Selección</small><b>Maíz & ceniza</b><span>$285</span></div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-copy">
+              <div class="project-meta">
+                <span class="project-number">04</span>
+                <span class="project-type concept">Concepto digital</span>
+              </div>
+              <h3>Altura Inmobiliaria</h3>
+              <p>
+                Landing page para presentar propiedades, facilitar la exploración del
+                catálogo y conectar prospectos con asesores inmobiliarios.
+              </p>
+              <div class="tags">
+                <span>Web Design</span><span>HTML</span><span>CSS</span>
+                <span>JavaScript</span><span>Lead Generation</span>
+              </div>
+              <button class="text-link project-open" data-project="altura">Ver concepto <span>↗</span></button>
+            </div>
+            <div class="project-preview altura-preview">
+              <div class="sun-shape"></div>
+              <div class="estate-nav"><b>ALTURA</b><span>Propiedades · Nosotros · Contacto</span></div>
+              <div class="estate-copy"><small>Vive por encima de lo ordinario</small><h4>Espacios que elevan tu forma de vivir.</h4></div>
+              <div class="property-card"><div></div><small>Residencia Encino</small><b>$8.4 M MXN</b></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="sobre-mi">
+      <div class="container about-grid">
+        <div class="about-sticky reveal">
+          <p class="eyebrow">Sobre mí</p>
+          <h2>Diseño con intención. Desarrollo con estructura.</h2>
+        </div>
+        <div class="about-content reveal delay-1">
+          <p class="large-copy">
+            Soy Augusto Ramírez, desarrollador de software con experiencia en productos
+            web y móviles. Trabajo desde la definición de requerimientos hasta el diseño,
+            desarrollo, pruebas, seguridad y publicación de una solución.
+          </p>
+          <p>
+            Mi enfoque combina backend con Python y Django, desarrollo iOS con Swift y
+            SwiftUI, automatización, chatbots y bases de ciberseguridad. Me interesa crear
+            sistemas claros, escalables, agradables de utilizar y diseñados con seguridad.
+          </p>
+          <div class="principles">
+            <div><span>01</span><h3>Claridad</h3><p>Interfaces fáciles de entender y procesos sin fricción.</p></div>
+            <div><span>02</span><h3>Función</h3><p>Cada decisión visual debe respaldar una necesidad real.</p></div>
+            <div><span>03</span><h3>Seguridad</h3><p>Soluciones construidas con prevención, control y buenas prácticas.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section capabilities" id="tecnologias">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow">Tecnologías y capacidades</p>
+            <h2>Más que un solo stack.</h2>
+          </div>
+          <p>
+            Puedo moverme entre desarrollo de producto, backend, aplicaciones iOS,
+            automatización y seguridad para construir soluciones más completas.
+          </p>
+        </div>
+
+        <div class="capability-grid">
+          <article class="capability-card reveal">
+            <span class="capability-index">01 / Web</span>
+            <h3>Backend y aplicaciones web</h3>
+            <p>Plataformas operativas, paneles administrativos, APIs, autenticación y bases de datos.</p>
+            <div class="skill-pills">
+              <span>Python</span><span>Django</span><span>DRF</span><span>JavaScript</span>
+              <span>PostgreSQL</span><span>Supabase</span><span>REST APIs</span>
+            </div>
+          </article>
+
+          <article class="capability-card reveal delay-1">
+            <span class="capability-index">02 / Apple</span>
+            <h3>Desarrollo iOS</h3>
+            <p>Interfaces y aplicaciones nativas para el ecosistema Apple con una experiencia fluida y moderna.</p>
+            <div class="skill-pills">
+              <span>Swift</span><span>SwiftUI</span><span>iOS</span>
+              <span>Arquitectura de interfaces</span><span>Consumo de APIs</span>
+            </div>
+          </article>
+
+          <article class="capability-card reveal">
+            <span class="capability-index">03 / Automation</span>
+            <h3>Chatbots y automatización</h3>
+            <p>Flujos conversacionales, integraciones y scripts para reducir trabajo manual y conectar servicios.</p>
+            <div class="skill-pills">
+              <span>Chatbots</span><span>Python scripting</span><span>APIs</span>
+              <span>Integraciones</span><span>Automatización</span>
+            </div>
+          </article>
+
+          <article class="capability-card security-card reveal delay-1">
+            <span class="capability-index">04 / Security</span>
+            <h3>Ciberseguridad ética</h3>
+            <p>Buenas bases de redes, Linux y pruebas de seguridad autorizadas, con enfoque en desarrollo seguro.</p>
+            <div class="skill-pills">
+              <span>Kali Linux</span><span>Linux</span><span>Python</span><span>C</span>
+              <span>Hacking ético</span><span>Seguridad de aplicaciones</span><span>Redes</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="language-strip reveal" aria-label="Lenguajes y herramientas adicionales">
+          <span>Python</span><span>C++</span><span>C</span><span>Swift</span><span>JavaScript</span>
+          <span>Git</span><span>GitHub</span><span>Render</span><span>Vercel</span><span>PostgreSQL</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section experience" id="experiencia">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">Experiencia</p><h2>De la idea a una solución utilizable.</h2></div>
+          <p>Capacidades que aplico durante el ciclo completo de cada proyecto.</p>
+        </div>
+        <div class="experience-grid">
+          <article class="experience-item reveal"><span>01</span><h3>Desarrollo web</h3><p>Aplicaciones, paneles administrativos, APIs y sitios comerciales responsivos.</p></article>
+          <article class="experience-item reveal"><span>02</span><h3>Desarrollo iOS</h3><p>Aplicaciones e interfaces nativas construidas con Swift y SwiftUI.</p></article>
+          <article class="experience-item reveal"><span>03</span><h3>Chatbots y automatización</h3><p>Integraciones, asistentes conversacionales y scripts orientados a procesos reales.</p></article>
+          <article class="experience-item reveal"><span>04</span><h3>Ciberseguridad</h3><p>Linux, redes, seguridad de aplicaciones y pruebas éticas en entornos autorizados.</p></article>
+          <article class="experience-item reveal"><span>05</span><h3>Gestión de producto</h3><p>Requerimientos, prioridades, historias de usuario, seguimiento y coordinación.</p></article>
+          <article class="experience-item reveal"><span>06</span><h3>Implementación</h3><p>Git, bases de datos, pruebas, despliegue y mantenimiento continuo.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contacto">
+      <div class="container contact-card reveal">
+        <div>
+          <p class="eyebrow">Contacto</p>
+          <h2>¿Tienes una idea que podamos convertir en software?</h2>
+          <p>Cuéntame sobre tu proyecto, proceso o negocio. Revisemos qué podemos construir.</p>
+        </div>
+        <div class="contact-actions">
+          <a class="button light" href="https://wa.me/528991202450" target="_blank" rel="noopener">WhatsApp <span>↗</span></a>
+          <a class="contact-link" href="https://instagram.com/adtech_of" target="_blank" rel="noopener">@adtech_of</a>
+          <a class="contact-link" href="https://github.com/AUGUSTRMZ" target="_blank" rel="noopener">GitHub / AUGUSTRMZ</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="brand"><span class="brand-mark">A</span><span>Augusto<span class="brand-dot">.</span></span></div>
+      <p>Web, iOS, automatización y ciberseguridad.</p>
+      <span>© <span id="year"></span> ADTech</span>
+    </div>
+  </footer>
+
+  <div class="modal" id="projectModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" data-close-modal aria-label="Cerrar">×</button>
+      <p class="eyebrow" id="modalLabel"></p>
+      <h2 id="modalTitle"></h2>
+      <p class="modal-intro" id="modalIntro"></p>
+      <div class="modal-grid">
+        <div><small>El reto</small><p id="modalChallenge"></p></div>
+        <div><small>La solución</small><p id="modalSolution"></p></div>
+        <div><small>Mi participación</small><p id="modalRole"></p></div>
+        <div><small>Resultado</small><p id="modalResult"></p></div>
+      </div>
+
+      <section class="project-gallery-section" id="modalGallerySection" aria-labelledby="galleryTitle">
+        <div class="gallery-heading">
+          <div>
+            <p class="eyebrow">Galería del proyecto</p>
+            <h3 id="galleryTitle">Capturas y detalles</h3>
+          </div>
+          <span id="galleryCount"></span>
+        </div>
+        <div class="project-gallery" id="modalGallery"></div>
+        <div class="gallery-empty" id="galleryEmpty">
+          <span>+</span>
+          <div>
+            <strong>Capturas por agregar</strong>
+            <p>Agrega archivos 01.png, 02.png y 03.png dentro de la carpeta de este proyecto.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="image-viewer" id="imageViewer" aria-hidden="true">
+    <button class="viewer-backdrop" data-close-viewer aria-label="Cerrar imagen"></button>
+    <figure class="viewer-content">
+      <button class="viewer-close" data-close-viewer aria-label="Cerrar imagen">×</button>
+      <img id="viewerImage" src="" alt="">
+      <figcaption id="viewerCaption"></figcaption>
+    </figure>
+  </div>
+</body>
+</html>
