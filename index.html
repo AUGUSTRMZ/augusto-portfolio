@@ -201,6 +201,42 @@
     html[data-theme="dark"] .sun { opacity: 0; transform: rotate(45deg) scale(.5); }
     html[data-theme="light"] .moon { opacity: 0; transform: rotate(-45deg) scale(.5); }
 
+
+
+    .language-switch {
+      height: 45px;
+      padding: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--panel);
+      backdrop-filter: blur(12px);
+    }
+
+    .language-switch button {
+      min-width: 35px;
+      height: 35px;
+      padding: 0 8px;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      font: 800 .68rem "Manrope", sans-serif;
+      letter-spacing: .06em;
+      cursor: pointer;
+      transition: background .22s ease, color .22s ease, transform .22s ease;
+    }
+
+    .language-switch button:hover { color: var(--text); }
+
+    .language-switch button.active {
+      background: var(--text);
+      color: var(--bg);
+      box-shadow: 0 6px 18px rgba(0,0,0,.12);
+    }
+
     .menu-button { display: none; }
     .menu-button span {
       width: 20px;
@@ -1582,6 +1618,11 @@
       .section { padding: 82px 0; }
 
       .nav { height: 73px; }
+
+      .nav-actions { gap: 6px; }
+      .language-switch { height: 41px; padding: 3px; }
+      .language-switch button { min-width: 31px; height: 33px; padding: 0 6px; }
+
       .menu-button { display: grid; place-content: center; }
       .nav-links {
         position: fixed;
@@ -1675,6 +1716,7 @@
     }
 
     @media (max-width: 480px) {
+      .brand > span:last-child { display: none; }
       .hero-actions .button { width: 100%; }
       .hero-proof { display: grid; grid-template-columns: 1fr 1fr; }
       .proof-chip { text-align: center; }
@@ -1728,6 +1770,10 @@
       </nav>
 
       <div class="nav-actions">
+        <div class="language-switch" role="group" aria-label="Seleccionar idioma">
+          <button type="button" class="language-option" data-language="es" aria-label="Español" aria-pressed="true">ES</button>
+          <button type="button" class="language-option" data-language="en" aria-label="English" aria-pressed="false">EN</button>
+        </div>
         <button class="icon-button theme-toggle" id="themeToggle" aria-label="Cambiar tema">
           <span class="sun">☀</span>
           <span class="moon">☾</span>
@@ -2128,6 +2174,352 @@
     const menuButton = document.getElementById("menuButton");
     const navLinks = document.getElementById("navLinks");
     const cursorGlow = document.getElementById("cursorGlow");
+    const languageButtons = [...document.querySelectorAll(".language-option")];
+    const metaDescription = document.querySelector('meta[name="description"]');
+
+    const pageMetadata = {
+      es: {
+        title: "Augusto Ramírez — Software & Product Design",
+        description: "Portafolio de Augusto Ramírez — Diseño y desarrollo de productos digitales, sistemas web y experiencias de alto nivel."
+      },
+      en: {
+        title: "Augusto Ramírez — Software Engineer & Product Designer",
+        description: "Augusto Ramírez's portfolio — Product design, web systems and high-quality digital experiences."
+      }
+    };
+
+    const staticTextTranslations = {
+      "Proyectos": "Projects",
+      "Capacidades": "Capabilities",
+      "Experiencia": "Experience",
+      "Contacto": "Contact",
+      "Disponible para nuevos proyectos": "Available for new projects",
+      "Construyo software que": "I build software that",
+      "se siente listo para competir.": "feels ready to compete.",
+      "Diseño y desarrollo productos digitales con una ejecución visual limpia, una arquitectura sólida y una experiencia pensada para usuarios reales.": "I design and develop digital products with clean visual execution, solid architecture and an experience built for real users.",
+      "Ver proyectos": "View projects",
+      "Hablemos por WhatsApp": "Let's talk on WhatsApp",
+      "Ciberseguridad": "Cybersecurity",
+      "Producto real · WOS": "Real product · WOS",
+      "Diseño y desarrollo": "Design and development",
+      "Tecnologías principales": "Core technologies",
+      "Trabajo seleccionado": "Selected work",
+      "Proyectos que muestran producto, no solo pantallas.": "Projects that demonstrate products, not just screens.",
+      "Cada proyecto está presentado desde el problema, la solución y la ejecución. WOS ocupa el lugar principal por ser el caso más completo y operativo.": "Each project is presented through the problem, the solution and the execution. WOS takes the lead as the most complete and operational case study.",
+      "Proyecto real": "Real project",
+      "Caso principal": "Featured case study",
+      "Plataforma de control operativo para organizar personal, áreas, incidencias, cumplimiento y trazabilidad entre múltiples sucursales.": "An operations management platform for organizing staff, work areas, incidents, compliance and traceability across multiple locations.",
+      "Mi rol": "My role",
+      "Producto + desarrollo": "Product + development",
+      "Estado": "Status",
+      "En producción": "In production",
+      "Ver caso completo": "View full case study",
+      "WOS · Centro de control": "WOS · Control center",
+      "3 capturas disponibles · Haz clic en “Ver caso completo”": "3 screenshots available · Click “View full case study”",
+      "3 capturas": "3 screenshots",
+      "Concepto comercial": "Commercial concept",
+      "Experiencia web de lujo para un restaurante de cocina mexicana contemporánea.": "A luxury web experience for a contemporary Mexican restaurant.",
+      "Explorar": "Explore",
+      "Plataforma inmobiliaria enfocada en propiedades premium y conversión de prospectos.": "A real estate platform focused on premium properties and lead conversion.",
+      "Producto móvil gamificado orientado a hábitos sostenibles y participación del usuario.": "A gamified mobile product focused on sustainable habits and user engagement.",
+      "No solo hago páginas. Construyo productos completos.": "I don't just make websites. I build complete products.",
+      "Puedo participar desde la definición del problema hasta el despliegue, combinando visión de producto, diseño de interfaz y ejecución técnica.": "I can contribute from problem definition through deployment, combining product thinking, interface design and technical execution.",
+      "Diseño de producto": "Product design",
+      "Flujos, jerarquías, interacción y sistemas visuales creados alrededor de objetivos reales.": "Flows, hierarchies, interactions and visual systems built around real objectives.",
+      "Prototipos": "Prototypes",
+      "Desarrollo web full stack": "Full-stack web development",
+      "Aplicaciones con autenticación, roles, bases de datos, paneles administrativos y lógica de negocio.": "Applications with authentication, roles, databases, admin dashboards and business logic.",
+      "Aplicaciones móviles": "Mobile applications",
+      "Interfaces multiplataforma centradas en rendimiento, claridad y una experiencia consistente.": "Cross-platform interfaces focused on performance, clarity and a consistent experience.",
+      "Operación y despliegue": "Operations and deployment",
+      "Configuración de servicios, control de versiones, pruebas, publicación y evolución del producto.": "Service configuration, version control, testing, deployment and product evolution.",
+      "Experiencia aplicada": "Applied experience",
+      "Tecnología, producto y trabajo con personas.": "Technology, product and working with people.",
+      "Mi experiencia mezcla desarrollo directo, dirección de producto, operación en negocios reales y enseñanza técnica.": "My experience combines hands-on development, product leadership, real business operations and technical instruction.",
+      "Software & operación": "Software & operations",
+      "Diseño y evolución de una plataforma operativa utilizada para seguimiento, gestión y toma de decisiones.": "Design and evolution of an operations platform used for tracking, management and decision-making.",
+      "2026 — Actualidad": "2026 — Present",
+      "Coordinación de producto, experiencia móvil, prioridades de desarrollo y enfoque de crecimiento.": "Product coordination, mobile experience, development priorities and growth strategy.",
+      "Educación": "Education",
+      "Preparación e impartición de cursos prácticos de desarrollo web y programación para estudiantes.": "Planning and teaching practical web development and programming courses for students.",
+      "Forma de trabajo": "How I work",
+      "De una idea confusa a un producto publicable.": "From an unclear idea to a launch-ready product.",
+      "Un proceso corto, visible y enfocado en entregar algo que realmente pueda utilizarse.": "A focused, transparent process built to deliver something people can actually use.",
+      "Entender": "Understand",
+      "Definimos problema, usuarios, prioridades y límites del proyecto.": "We define the problem, users, priorities and project boundaries.",
+      "Diseñar": "Design",
+      "Construimos la experiencia, estructura visual y flujo principal.": "We build the experience, visual structure and primary flow.",
+      "Desarrollar": "Develop",
+      "Implementamos funciones, datos, seguridad y comportamiento.": "We implement features, data, security and behavior.",
+      "Publicar": "Launch",
+      "Probamos, desplegamos y dejamos una base preparada para crecer.": "We test, deploy and leave a foundation ready to grow.",
+      "Nuevo proyecto": "New project",
+      "Construyamos algo que se vea y funcione en serio.": "Let's build something that looks and works professionally.",
+      "Cuéntame qué quieres resolver. Podemos comenzar desde una idea, mejorar un producto existente o desarrollar una plataforma desde cero.": "Tell me what you want to solve. We can start from an idea, improve an existing product or build a platform from the ground up.",
+      "Iniciar conversación": "Start a conversation",
+      "Diseñado y desarrollado en México.": "Designed and developed in Mexico.",
+      "Caso de estudio": "Case study",
+      "Proyecto": "Project",
+      "Galería del proyecto": "Project gallery",
+      "Capturas y detalles": "Screenshots and details"
+    };
+
+    const attributeTranslations = {
+      "Inicio": "Home",
+      "Navegación principal": "Main navigation",
+      "Cambiar tema": "Change theme",
+      "Abrir menú": "Open menu",
+      "Seleccionar idioma": "Select language",
+      "Vista conceptual de un panel operativo": "Conceptual view of an operations dashboard",
+      "Panel principal de WOS Control Operativo": "Main WOS Control Operativo dashboard",
+      "Portada del concepto web Lumbre": "Cover of the Lumbre web concept",
+      "Portada del concepto web Altura Inmobiliaria": "Cover of the Altura Real Estate web concept",
+      "Cerrar": "Close",
+      "Visor de capturas": "Screenshot viewer",
+      "Cerrar imagen": "Close image",
+      "Captura anterior": "Previous screenshot",
+      "Captura siguiente": "Next screenshot"
+    };
+
+    const projectsByLanguage = {
+      es: {
+        wos: {
+          eyebrow: "Proyecto real · Caso principal",
+          title: "WOS Control Operativo",
+          lead: "Una plataforma web para centralizar el trabajo diario de colaboradores y gerentes, con contexto por sucursal, asignación de áreas, seguimiento de cumplimiento, alertas e historial operativo.",
+          stats: [
+            ["Rol", "Producto, UX/UI y desarrollo"],
+            ["Tecnología", "Django, DRF y PostgreSQL"],
+            ["Cobertura", "Colaborador y gerencia"]
+          ],
+          blocks: [
+            ["El reto", "La operación necesitaba dejar de depender de procesos dispersos y ofrecer una vista clara de tareas, responsables, incidencias y progreso por sucursal."],
+            ["La solución", "Se diseñó un sistema con roles, permisos, asignaciones diarias, cambios temporales de sucursal, alertas y trazabilidad."],
+            ["Mi aportación", "Definición funcional, diseño de interfaces, arquitectura del flujo, desarrollo full stack, pruebas y despliegue."],
+            ["Resultado", "Una base operativa real, preparada para seguir creciendo con reportes, evidencias y nuevas funciones de gestión."]
+          ],
+          screenshots: [
+            { src: "assets/projects/wos/01.png", alt: "Panel principal de WOS", caption: "Vista general del panel operativo" },
+            { src: "assets/projects/wos/02.png", alt: "Gestión operativa de WOS", caption: "Seguimiento de áreas, personal y actividades" },
+            { src: "assets/projects/wos/03.png", alt: "Detalle funcional de WOS", caption: "Flujo o módulo destacado del sistema" }
+          ]
+        },
+        lumbre: {
+          eyebrow: "Concepto comercial · Restaurante",
+          title: "Lumbre",
+          lead: "Una propuesta digital de alto nivel para demostrar cómo una identidad gastronómica puede convertirse en una experiencia web memorable y orientada a reservas.",
+          stats: [
+            ["Enfoque", "Dirección visual"],
+            ["Formato", "Sitio responsivo"],
+            ["Objetivo", "Marca y conversión"]
+          ],
+          blocks: [
+            ["Concepto", "Fuego, ingredientes locales y precisión técnica traducidos a una dirección visual sobria y cinematográfica."],
+            ["Experiencia", "Navegación clara, menú visual, historia de marca y reserva sin interrumpir la atmósfera del sitio."],
+            ["Valor comercial", "Una presencia digital que eleva la percepción del restaurante antes de que el cliente llegue a la mesa."],
+            ["Estado", "Proyecto conceptual desarrollado como demostración comercial para el portafolio."]
+          ],
+          screenshots: [
+            { src: "assets/projects/lumbre/01.png", alt: "Portada de Lumbre Restaurante", caption: "Hero y presentación de marca" },
+            { src: "assets/projects/lumbre/02.png", alt: "Experiencia gastronómica de Lumbre", caption: "Contenido y propuesta culinaria" },
+            { src: "assets/projects/lumbre/03.png", alt: "Reservaciones de Lumbre", caption: "Flujo de reservación y contacto" }
+          ]
+        },
+        altura: {
+          eyebrow: "Concepto comercial · Inmobiliaria",
+          title: "Altura",
+          lead: "Una experiencia inmobiliaria premium que combina presentación editorial, catálogo filtrable, fichas visuales y contacto directo.",
+          stats: [
+            ["Enfoque", "Propiedad premium"],
+            ["Formato", "Catálogo responsivo"],
+            ["Objetivo", "Captación de prospectos"]
+          ],
+          blocks: [
+            ["Concepto", "Una interfaz limpia donde la arquitectura y la fotografía son protagonistas."],
+            ["Funciones", "Búsqueda, filtros, favoritos, propiedades destacadas, fichas y contacto comercial."],
+            ["Experiencia", "Diseñada para sentirse exclusiva sin sacrificar claridad ni facilidad de navegación."],
+            ["Estado", "Proyecto conceptual desarrollado como demostración comercial para el portafolio."]
+          ],
+          screenshots: [
+            { src: "assets/projects/altura/01.png", alt: "Portada de Altura Inmobiliaria", caption: "Landing page y propuesta de valor" },
+            { src: "assets/projects/altura/02.png", alt: "Propiedades de Altura Inmobiliaria", caption: "Exploración de propiedades destacadas" },
+            { src: "assets/projects/altura/03.png", alt: "Sección comercial de Altura", caption: "Presentación de propiedades y contacto" }
+          ]
+        },
+        habitree: {
+          eyebrow: "Proyecto real · Producto móvil",
+          title: "HabiTree",
+          lead: "Aplicación móvil enfocada en hábitos sostenibles mediante misiones, recompensas y un sistema de progresión diseñado para mejorar la participación.",
+          stats: [
+            ["Rol", "Project Manager"],
+            ["Plataforma", "Flutter"],
+            ["Enfoque", "Gamificación"]
+          ],
+          blocks: [
+            ["El reto", "Convertir acciones sostenibles cotidianas en una experiencia clara, atractiva y repetible."],
+            ["La solución", "Misiones, recompensas, progreso y componentes reutilizables orientados a engagement."],
+            ["Mi aportación", "Coordinación de prioridades, definición del producto, seguimiento del desarrollo y decisiones de experiencia."],
+            ["Aprendizaje", "Trabajo multidisciplinario, organización de producto y evolución de una aplicación móvil real."]
+          ],
+          screenshots: []
+        }
+      },
+      en: {
+        wos: {
+          eyebrow: "Real project · Featured case study",
+          title: "WOS Control Operativo",
+          lead: "A web platform that centralizes the daily work of employees and managers, with location context, daily area assignments, compliance tracking, alerts and operational history.",
+          stats: [
+            ["Role", "Product, UX/UI and development"],
+            ["Technology", "Django, DRF and PostgreSQL"],
+            ["Scope", "Employees and management"]
+          ],
+          blocks: [
+            ["The challenge", "The operation needed to move away from fragmented processes and provide a clear view of tasks, owners, incidents and progress by location."],
+            ["The solution", "I designed a role-based system with permissions, daily assignments, temporary location transfers, alerts and full traceability."],
+            ["My contribution", "Functional definition, interface design, flow architecture, full-stack development, testing and deployment."],
+            ["Outcome", "A real operational foundation prepared to grow with reports, evidence management and new administration features."]
+          ],
+          screenshots: [
+            { src: "assets/projects/wos/01.png", alt: "Main WOS dashboard", caption: "Overview of the operations dashboard" },
+            { src: "assets/projects/wos/02.png", alt: "WOS operations management", caption: "Tracking work areas, staff and activities" },
+            { src: "assets/projects/wos/03.png", alt: "WOS feature detail", caption: "A highlighted system flow or module" }
+          ]
+        },
+        lumbre: {
+          eyebrow: "Commercial concept · Restaurant",
+          title: "Lumbre",
+          lead: "A high-end digital concept showing how a culinary identity can become a memorable web experience designed to drive reservations.",
+          stats: [
+            ["Focus", "Visual direction"],
+            ["Format", "Responsive website"],
+            ["Goal", "Brand and conversion"]
+          ],
+          blocks: [
+            ["Concept", "Fire, local ingredients and technical precision translated into a restrained, cinematic visual direction."],
+            ["Experience", "Clear navigation, a visual menu, brand storytelling and reservations without disrupting the site's atmosphere."],
+            ["Business value", "A digital presence that raises the restaurant's perceived value before the guest reaches the table."],
+            ["Status", "A conceptual project created as a commercial portfolio demonstration."]
+          ],
+          screenshots: [
+            { src: "assets/projects/lumbre/01.png", alt: "Lumbre restaurant homepage", caption: "Hero section and brand presentation" },
+            { src: "assets/projects/lumbre/02.png", alt: "Lumbre dining experience", caption: "Content and culinary proposition" },
+            { src: "assets/projects/lumbre/03.png", alt: "Lumbre reservations", caption: "Reservation and contact flow" }
+          ]
+        },
+        altura: {
+          eyebrow: "Commercial concept · Real estate",
+          title: "Altura",
+          lead: "A premium real estate experience combining editorial presentation, a filterable catalog, visual property pages and direct contact.",
+          stats: [
+            ["Focus", "Premium properties"],
+            ["Format", "Responsive catalog"],
+            ["Goal", "Lead generation"]
+          ],
+          blocks: [
+            ["Concept", "A clean interface where architecture and photography take center stage."],
+            ["Features", "Search, filters, favorites, featured listings, property pages and direct commercial contact."],
+            ["Experience", "Designed to feel exclusive without sacrificing clarity or ease of navigation."],
+            ["Status", "A conceptual project created as a commercial portfolio demonstration."]
+          ],
+          screenshots: [
+            { src: "assets/projects/altura/01.png", alt: "Altura Real Estate homepage", caption: "Landing page and value proposition" },
+            { src: "assets/projects/altura/02.png", alt: "Altura property listings", caption: "Exploration of featured properties" },
+            { src: "assets/projects/altura/03.png", alt: "Altura commercial section", caption: "Property presentation and contact" }
+          ]
+        },
+        habitree: {
+          eyebrow: "Real project · Mobile product",
+          title: "HabiTree",
+          lead: "A mobile app focused on sustainable habits through missions, rewards and a progression system designed to improve engagement.",
+          stats: [
+            ["Role", "Project Manager"],
+            ["Platform", "Flutter"],
+            ["Focus", "Gamification"]
+          ],
+          blocks: [
+            ["The challenge", "Turn everyday sustainable actions into a clear, engaging and repeatable experience."],
+            ["The solution", "Missions, rewards, progression and reusable components designed around engagement."],
+            ["My contribution", "Priority coordination, product definition, development follow-up and experience decisions."],
+            ["Key learning", "Cross-functional collaboration, product organization and the evolution of a real mobile application."]
+          ],
+          screenshots: []
+        }
+      }
+    };
+
+    const originalTextNodes = new WeakMap();
+    const originalAttributes = new WeakMap();
+    let currentLanguage = "es";
+    let activeProjectKey = null;
+
+    function translateStaticText(language) {
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+          const parent = node.parentElement;
+          if (!parent || ["SCRIPT", "STYLE", "NOSCRIPT"].includes(parent.tagName)) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          return node.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+        }
+      });
+
+      const nodes = [];
+      while (walker.nextNode()) nodes.push(walker.currentNode);
+
+      nodes.forEach(node => {
+        if (!originalTextNodes.has(node)) originalTextNodes.set(node, node.nodeValue);
+        const original = originalTextNodes.get(node);
+        const key = original.trim();
+        const translated = language === "en" ? staticTextTranslations[key] : null;
+        const replacement = translated || key;
+        node.nodeValue = original.replace(key, replacement);
+      });
+    }
+
+    function translateStaticAttributes(language) {
+      document.querySelectorAll("[aria-label], [alt], [title], [placeholder]").forEach(element => {
+        if (!originalAttributes.has(element)) originalAttributes.set(element, {});
+        const stored = originalAttributes.get(element);
+
+        ["aria-label", "alt", "title", "placeholder"].forEach(attribute => {
+          if (!element.hasAttribute(attribute)) return;
+          if (!(attribute in stored)) stored[attribute] = element.getAttribute(attribute);
+          const original = stored[attribute];
+          element.setAttribute(
+            attribute,
+            language === "en" && attributeTranslations[original]
+              ? attributeTranslations[original]
+              : original
+          );
+        });
+      });
+    }
+
+    function applyLanguage(language, persist = true) {
+      currentLanguage = language === "en" ? "en" : "es";
+      root.lang = currentLanguage;
+      root.dataset.language = currentLanguage;
+
+      translateStaticText(currentLanguage);
+      translateStaticAttributes(currentLanguage);
+
+      document.title = pageMetadata[currentLanguage].title;
+      if (metaDescription) metaDescription.content = pageMetadata[currentLanguage].description;
+
+      languageButtons.forEach(button => {
+        const active = button.dataset.language === currentLanguage;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+
+      if (persist) localStorage.setItem("portfolio-language", currentLanguage);
+
+      if (activeProjectKey && modal.classList.contains("open")) {
+        populateModal(activeProjectKey);
+        if (imageViewer.classList.contains("open")) updateViewer();
+      }
+    }
 
     const savedTheme = localStorage.getItem("portfolio-theme");
     if (savedTheme) {
@@ -2139,6 +2531,10 @@
     themeToggle.addEventListener("click", () => {
       root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
       localStorage.setItem("portfolio-theme", root.dataset.theme);
+    });
+
+    languageButtons.forEach(button => {
+      button.addEventListener("click", () => applyLanguage(button.dataset.language));
     });
 
     menuButton.addEventListener("click", () => {
@@ -2190,89 +2586,6 @@
     }, { rootMargin: "-42% 0px -50% 0px" });
 
     sections.forEach(section => sectionObserver.observe(section));
-
-    const projects = {
-      wos: {
-        eyebrow: "Proyecto real · Caso principal",
-        title: "WOS Control Operativo",
-        lead: "Una plataforma web para centralizar el trabajo diario de colaboradores y gerentes, con contexto por sucursal, asignación de áreas, seguimiento de cumplimiento, alertas e historial operativo.",
-        stats: [
-          ["Rol", "Producto, UX/UI y desarrollo"],
-          ["Tecnología", "Django, DRF y PostgreSQL"],
-          ["Cobertura", "Colaborador y gerencia"]
-        ],
-        blocks: [
-          ["El reto", "La operación necesitaba dejar de depender de procesos dispersos y ofrecer una vista clara de tareas, responsables, incidencias y progreso por sucursal."],
-          ["La solución", "Se diseñó un sistema con roles, permisos, asignaciones diarias, cambios temporales de sucursal, alertas y trazabilidad."],
-          ["Mi aportación", "Definición funcional, diseño de interfaces, arquitectura del flujo, desarrollo full stack, pruebas y despliegue."],
-          ["Resultado", "Una base operativa real, preparada para seguir creciendo con reportes, evidencias y nuevas funciones de gestión."]
-        ],
-        screenshots: [
-          { src: "assets/projects/wos/01.png", alt: "Panel principal de WOS", caption: "Vista general del panel operativo" },
-          { src: "assets/projects/wos/02.png", alt: "Gestión operativa de WOS", caption: "Seguimiento de áreas, personal y actividades" },
-          { src: "assets/projects/wos/03.png", alt: "Detalle funcional de WOS", caption: "Flujo o módulo destacado del sistema" }
-        ]
-      },
-      lumbre: {
-        eyebrow: "Concepto comercial · Restaurante",
-        title: "Lumbre",
-        lead: "Una propuesta digital de alto nivel para demostrar cómo una identidad gastronómica puede convertirse en una experiencia web memorable y orientada a reservas.",
-        stats: [
-          ["Enfoque", "Dirección visual"],
-          ["Formato", "Sitio responsivo"],
-          ["Objetivo", "Marca y conversión"]
-        ],
-        blocks: [
-          ["Concepto", "Fuego, ingredientes locales y precisión técnica traducidos a una dirección visual sobria y cinematográfica."],
-          ["Experiencia", "Navegación clara, menú visual, historia de marca y reserva sin interrumpir la atmósfera del sitio."],
-          ["Valor comercial", "Una presencia digital que eleva la percepción del restaurante antes de que el cliente llegue a la mesa."],
-          ["Estado", "Proyecto conceptual desarrollado como demostración comercial para el portafolio."]
-        ],
-        screenshots: [
-          { src: "assets/projects/lumbre/01.png", alt: "Portada de Lumbre Restaurante", caption: "Hero y presentación de marca" },
-          { src: "assets/projects/lumbre/02.png", alt: "Experiencia gastronómica de Lumbre", caption: "Contenido y propuesta culinaria" },
-          { src: "assets/projects/lumbre/03.png", alt: "Reservaciones de Lumbre", caption: "Flujo de reservación y contacto" }
-        ]
-      },
-      altura: {
-        eyebrow: "Concepto comercial · Inmobiliaria",
-        title: "Altura",
-        lead: "Una experiencia inmobiliaria premium que combina presentación editorial, catálogo filtrable, fichas visuales y contacto directo.",
-        stats: [
-          ["Enfoque", "Propiedad premium"],
-          ["Formato", "Catálogo responsivo"],
-          ["Objetivo", "Captación de prospectos"]
-        ],
-        blocks: [
-          ["Concepto", "Una interfaz limpia donde la arquitectura y la fotografía son protagonistas."],
-          ["Funciones", "Búsqueda, filtros, favoritos, propiedades destacadas, fichas y contacto comercial."],
-          ["Experiencia", "Diseñada para sentirse exclusiva sin sacrificar claridad ni facilidad de navegación."],
-          ["Estado", "Proyecto conceptual desarrollado como demostración comercial para el portafolio."]
-        ],
-        screenshots: [
-          { src: "assets/projects/altura/01.png", alt: "Portada de Altura Inmobiliaria", caption: "Landing page y propuesta de valor" },
-          { src: "assets/projects/altura/02.png", alt: "Propiedades de Altura Inmobiliaria", caption: "Exploración de propiedades destacadas" },
-          { src: "assets/projects/altura/03.png", alt: "Sección comercial de Altura", caption: "Presentación de propiedades y contacto" }
-        ]
-      },
-      habitree: {
-        eyebrow: "Proyecto real · Producto móvil",
-        title: "HabiTree",
-        lead: "Aplicación móvil enfocada en hábitos sostenibles mediante misiones, recompensas y un sistema de progresión diseñado para mejorar la participación.",
-        stats: [
-          ["Rol", "Project Manager"],
-          ["Plataforma", "Flutter"],
-          ["Enfoque", "Gamificación"]
-        ],
-        blocks: [
-          ["El reto", "Convertir acciones sostenibles cotidianas en una experiencia clara, atractiva y repetible."],
-          ["La solución", "Misiones, recompensas, progreso y componentes reutilizables orientados a engagement."],
-          ["Mi aportación", "Coordinación de prioridades, definición del producto, seguimiento del desarrollo y decisiones de experiencia."],
-          ["Aprendizaje", "Trabajo multidisciplinario, organización de producto y evolución de una aplicación móvil real."]
-        ],
-        screenshots: []
-      }
-    };
 
     const modal = document.getElementById("caseModal");
     const modalTitle = document.getElementById("modalTitle");
@@ -2331,15 +2644,25 @@
       activeScreenshots = project.screenshots || [];
       modalGallery.innerHTML = "";
       modalGallerySection.hidden = activeScreenshots.length === 0;
+
+      const screenshotWord = currentLanguage === "en"
+        ? (activeScreenshots.length === 1 ? "screenshot" : "screenshots")
+        : (activeScreenshots.length === 1 ? "captura" : "capturas");
+
       galleryCount.textContent = activeScreenshots.length
-        ? `${activeScreenshots.length} ${activeScreenshots.length === 1 ? "captura" : "capturas"}`
+        ? `${activeScreenshots.length} ${screenshotWord}`
         : "";
 
       activeScreenshots.forEach((image, index) => {
         const button = document.createElement("button");
         button.className = "gallery-item";
         button.type = "button";
-        button.setAttribute("aria-label", `Abrir captura ${index + 1}: ${image.caption || image.alt}`);
+        button.setAttribute(
+          "aria-label",
+          currentLanguage === "en"
+            ? `Open screenshot ${index + 1}: ${image.caption || image.alt}`
+            : `Abrir captura ${index + 1}: ${image.caption || image.alt}`
+        );
 
         const img = document.createElement("img");
         img.src = image.src;
@@ -2347,7 +2670,7 @@
         img.loading = "lazy";
 
         const caption = document.createElement("span");
-        caption.textContent = image.caption || `Captura ${index + 1}`;
+        caption.textContent = image.caption || (currentLanguage === "en" ? `Screenshot ${index + 1}` : `Captura ${index + 1}`);
 
         button.addEventListener("click", () => openViewer(index));
         button.append(img, caption);
@@ -2355,8 +2678,8 @@
       });
     }
 
-    function openModal(key) {
-      const project = projects[key];
+    function populateModal(key) {
+      const project = projectsByLanguage[currentLanguage][key];
       if (!project) return;
 
       modalEyebrow.textContent = project.eyebrow;
@@ -2369,6 +2692,11 @@
         `<article class="case-block"><h3>${title}</h3><p>${copy}</p></article>`
       ).join("");
       renderGallery(project);
+    }
+
+    function openModal(key) {
+      activeProjectKey = key;
+      populateModal(key);
 
       modal.classList.add("open");
       modal.setAttribute("aria-hidden", "false");
@@ -2382,6 +2710,7 @@
       modal.classList.remove("open");
       modal.setAttribute("aria-hidden", "true");
       document.body.classList.remove("modal-open");
+      activeProjectKey = null;
     }
 
     document.querySelectorAll(".open-case").forEach(button => {
@@ -2407,6 +2736,10 @@
     });
 
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    const savedLanguage = localStorage.getItem("portfolio-language");
+    const browserLanguage = navigator.language?.toLowerCase().startsWith("en") ? "en" : "es";
+    applyLanguage(savedLanguage || browserLanguage, false);
   </script>
 </body>
 </html>
