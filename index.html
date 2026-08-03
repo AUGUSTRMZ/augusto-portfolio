@@ -12,174 +12,10 @@ header{position:fixed;inset:0 0 auto;z-index:50;padding:14px 0;transition:.25s}h
 .contact-wrap{border:1px solid var(--line);border-radius:34px;background:linear-gradient(135deg,var(--panel),var(--panel2));padding:45px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:30px}.contact-wrap h2{font:850 clamp(2.2rem,4vw,4.5rem)/1 var(--display);letter-spacing:-.06em;margin:0 0 15px}.contact-wrap p{color:var(--muted);max-width:650px;line-height:1.7}.contact-actions{display:grid;gap:10px}footer{padding:35px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}.footer-row{display:flex;justify-content:space-between;gap:20px}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:90;display:none;place-items:center;padding:20px}.modal.open{display:grid}.modal-box{width:min(1100px,100%);max-height:92vh;overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:26px;padding:18px}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.modal-head button{border:1px solid var(--line);background:var(--bg);border-radius:999px;width:42px;height:42px}.modal-main{width:100%;max-height:66vh;object-fit:contain;border-radius:18px;background:var(--bg)}.modal-thumbs{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:10px}.modal-thumbs button{border:1px solid var(--line);background:none;border-radius:14px;padding:4px}.modal-thumbs img{height:100px;width:100%;object-fit:cover;border-radius:10px}
 @media(max-width:980px){.nav-links{display:none}.menu{display:inline-flex}.hero-grid,.quote-shell{grid-template-columns:1fr}.hero{min-height:auto}.project-card.featured{grid-template-columns:1fr}.project-card.featured .project-stack{height:330px}.project-card:not(.featured){grid-column:span 6}.quote-summary{position:static;min-height:0}.pricing-grid,.ready-grid{grid-template-columns:repeat(2,1fr)}.contact-wrap{grid-template-columns:1fr}.contact-actions{grid-template-columns:repeat(2,1fr)}.hero-grid{gap:45px}.dashboard{grid-template-columns:110px 1fr}}
-@media(max-width:640px){.container{width:min(100% - 24px,var(--container))}.section{padding:78px 0}.section-head{align-items:start;flex-direction:column}.hero{padding-top:120px}.hero h1{font-size:3.25rem}.hero-proof{grid-template-columns:1fr}.visual-shell{padding:8px}.dashboard{grid-template-columns:1fr}.dash-side{display:none}.metrics{grid-template-columns:1fr}.project-card.featured,.project-card:not(.featured){grid-column:1/-1}.project-card.featured .project-stack{height:260px}.project-stack{height:205px}.pricing-grid,.ready-grid,.project-choice-grid,.config-grid,.feature-grid{grid-template-columns:1fr}.quote-shell{padding:9px}.quote-builder,.quote-summary{padding:19px}.quote-progress{grid-template-columns:1fr}.quote-step:nth-child(n+2){display:none}.feature-card{grid-template-columns:auto 1fr}.feature-card em{grid-column:2}.contact-wrap{padding:25px}.contact-actions{grid-template-columns:1fr}.footer-row{flex-direction:column}.language-label{display:none}}
+@media(max-width:640px){.container{width:min(100% - 24px,var(--container))}.section{padding:78px 0}.section-head{align-items:start;flex-direction:column}.hero{padding-top:120px}.hero h1{font-size:3.25rem}.hero-proof{grid-template-columns:1fr}.visual-shell{padding:8px}.dashboard{grid-template-columns:1fr}.dash-side{display:none}.metrics{grid-template-columns:1fr}.project-card.featured,.project-card:not(.featured){grid-column:1/-1}.project-card.featured .project-stack{height:260px}.project-stack{height:205px}.pricing-grid,.ready-grid,.project-choice-grid,.config-grid,.feature-grid{grid-template-columns:1fr}.quote-shell{padding:9px}.quote-builder,.quote-summary{padding:19px}.quote-progress{grid-template-columns:1fr}.quote-step:nth-child(n+2){display:none}.feature-card{grid-template-columns:auto 1fr}.feature-card em{grid-column:2}.contact-wrap{padding:25px}.contact-actions{grid-template-columns:1fr}.footer-row{flex-direction:column}.language-label{display:inline}}
 
 body{background:radial-gradient(circle at 80% 0,var(--accent-soft),transparent 35rem),var(--bg)}
 header .nav{border:1px solid var(--line);background:color-mix(in srgb,var(--panel) 72%,transparent);backdrop-filter:blur(20px);border-radius:999px;padding:8px 10px 8px 18px}.hero-grid{position:relative}.hero-copy{z-index:2}.hero-visual{transform:perspective(1200px) rotateY(-4deg)}.price-card:hover,.ready-card:hover,.project-card:hover{border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}.section:nth-of-type(odd){background:linear-gradient(180deg,transparent,var(--accent-soft),transparent)}
-
-
-/* ===== MEJORAS DE INTERFAZ MOVIL ===== */
-.nav{position:relative}
-@media(max-width:980px){
-  .nav-links.mobile-open{
-    display:flex;
-    position:absolute;
-    top:calc(100% + 10px);
-    left:0;
-    right:0;
-    flex-direction:column;
-    gap:4px;
-    padding:12px;
-    border:1px solid var(--line);
-    border-radius:20px;
-    background:color-mix(in srgb,var(--panel) 94%,transparent);
-    backdrop-filter:blur(22px);
-    box-shadow:var(--shadow)
-  }
-  .nav-links.mobile-open a{padding:12px 14px;border-radius:12px}
-  .nav-links.mobile-open a:hover{background:var(--accent-soft)}
-}
-@media(max-width:640px){
-  html{scroll-padding-top:90px}
-  header{padding:8px 0}
-  header .nav{border-radius:20px;padding:7px 8px 7px 14px}
-  .brand{font-size:1.18rem}
-  .tiny-btn{height:39px;min-width:39px;padding:0 11px}
-  .container{width:min(100% - 20px,var(--container))}
-  .section{padding:68px 0}
-  .section-head{gap:14px;margin-bottom:28px}
-  .section-head h2{font-size:clamp(2rem,10vw,3rem);line-height:1.02}
-  .section-head>p{line-height:1.6}
-
-  .hero{padding:108px 0 58px}
-  .hero-grid{gap:34px}
-  .hero h1{font-size:clamp(2.75rem,14vw,4rem);margin:16px 0 22px}
-  .hero-copy>p{font-size:1rem;line-height:1.65}
-  .hero-actions{display:grid;grid-template-columns:1fr;margin-top:26px}
-  .hero-actions .button{width:100%}
-  .hero-proof{gap:4px;margin-top:30px}
-  .proof{padding:13px 4px}
-  .hero-visual{transform:none}
-  .visual-shell{border-radius:23px;padding:7px}
-  .window{border-radius:17px}
-  .window-top{height:39px;padding:0 12px}
-  .dash-main{padding:12px}
-  .metrics{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
-  .metric{padding:10px 8px;border-radius:11px;min-width:0}
-  .metric small{font-size:.66rem}
-  .metric strong{font-size:1rem;margin-top:5px}
-  .chart{height:145px;margin-top:8px}
-  .thumb-rail{gap:5px;margin-top:7px}
-  .thumb-rail img{height:64px;border-radius:9px}
-
-  .projects-grid{gap:14px}
-  .project-card{padding:16px;border-radius:22px}
-  .project-card:not(.featured){min-height:0}
-  .project-card.featured .project-info{padding:0}
-  .project-card.featured h3{font-size:2.4rem;margin:15px 0 9px}
-  .project-card h3{font-size:1.45rem}
-  .project-card p{line-height:1.55}
-  .project-card .pill{font-size:.72rem}
-  .project-top{align-items:flex-start}
-
-  /* La captura principal ocupa todo el ancho y las secundarias quedan debajo. */
-  .project-stack,
-  .project-card.featured .project-stack{
-    height:auto;
-    margin-top:18px;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    grid-template-rows:220px 112px;
-    gap:7px
-  }
-  .project-stack img,
-  .project-card.featured .project-stack img{
-    min-width:0;
-    min-height:0;
-    border-radius:12px;
-    object-position:top center
-  }
-  .project-stack img:first-child,
-  .project-stack.five img:first-child{
-    grid-column:1/-1;
-    grid-row:1;
-  }
-  .project-stack.five{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    grid-template-rows:220px 108px 108px
-  }
-
-  .pricing-grid,.ready-grid{gap:12px}
-  .price-card,.ready-card{min-height:0;padding:19px}
-  .quote-shell{border-radius:24px}
-  .quote-builder,.quote-summary{border-radius:18px;padding:16px}
-  .choice-surface{min-height:98px}
-  .contact-wrap{border-radius:24px;padding:22px}
-
-  /* Galeria a pantalla completa con miniaturas desplazables. */
-  .modal{padding:0;place-items:stretch;background:var(--bg)}
-  .modal-box{
-    width:100%;
-    height:100dvh;
-    max-height:none;
-    border:0;
-    border-radius:0;
-    padding:12px;
-    overflow:auto;
-    overscroll-behavior:contain
-  }
-  .modal-head{
-    position:sticky;
-    top:-12px;
-    z-index:5;
-    padding:13px 0 10px;
-    margin-bottom:8px;
-    background:color-mix(in srgb,var(--panel) 94%,transparent);
-    backdrop-filter:blur(18px);
-    border-bottom:1px solid var(--line)
-  }
-  .modal-head .eyebrow{margin-bottom:5px}
-  .modal-head h2{font-size:1.45rem}
-  .modal-head button{width:40px;height:40px;flex:0 0 auto}
-  .zoom-hint{display:block;color:var(--muted);font-size:.72rem;margin:8px 0 10px}
-  .modal-main{
-    display:block;
-    width:100%;
-    max-width:none;
-    max-height:none;
-    height:auto;
-    object-fit:initial;
-    object-position:top center;
-    border-radius:12px;
-    cursor:zoom-in;
-    transition:width .22s ease
-  }
-  .modal-main.zoomed{width:165%;cursor:zoom-out}
-  .modal-thumbs{
-    display:flex;
-    grid-template-columns:none;
-    gap:8px;
-    overflow-x:auto;
-    padding:4px 0 12px;
-    margin-top:10px;
-    scroll-snap-type:x proximity;
-    scrollbar-width:thin
-  }
-  .modal-thumbs button{
-    flex:0 0 105px;
-    padding:3px;
-    border-radius:11px;
-    scroll-snap-align:start
-  }
-  .modal-thumbs button.active{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
-  .modal-thumbs img{height:68px;border-radius:8px;object-position:top center}
-}
-@media(max-width:390px){
-  .project-stack,
-  .project-card.featured .project-stack{grid-template-rows:195px 96px}
-  .project-stack.five{grid-template-rows:195px 92px 92px}
-  .modal-main.zoomed{width:175%}
-}
-
 </style></head><body>
 <header id="header"><div class="container nav"><a class="brand" href="#inicio">AD<em>Tech</em></a><nav class="nav-links"><a href="#proyectos" data-es="Proyectos" data-en="Projects">Proyectos</a><a href="#servicios" data-es="Servicios" data-en="Services">Servicios</a><a href="#ready">ADTech Ready</a><a href="#cotizador" data-es="Cotizador" data-en="Estimator">Cotizador</a><a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a></nav><div class="nav-actions"><button class="tiny-btn language" aria-label="Cambiar idioma"><span class="language-label">ES</span></button><button class="tiny-btn theme" aria-label="Cambiar tema">◐</button><button class="tiny-btn menu" aria-label="Abrir menú">☰</button></div></div></header>
 
@@ -192,11 +28,10 @@ header .nav{border:1px solid var(--line);background:color-mix(in srgb,var(--pane
 <section class="section" id="cotizador"><div class="container"><div class="section-head"><div><p class="eyebrow" data-es="COTIZADOR PRELIMINAR" data-en="PRELIMINARY ESTIMATOR">COTIZADOR PRELIMINAR</p><h2 data-es="Arma una estimación más cercana a tu proyecto." data-en="Build an estimate closer to your project.">Arma una estimación más cercana a tu proyecto.</h2></div><p data-es="Elige una solución base, define el nivel del proyecto y agrega únicamente las funciones que necesitas." data-en="Choose a base solution, define the project level and add only what you need.">Elige una solución base, define el nivel del proyecto y agrega únicamente las funciones que necesitas.</p></div><div class="quote-shell"><div class="quote-builder"><div class="quote-progress"><div class="quote-step active"><b>01</b><span>Selecciona una base</span></div><div class="quote-step"><b>02</b><span>Configura el alcance</span></div><div class="quote-step"><b>03</b><span>Envía la estimación</span></div></div><div class="quote-group"><div class="quote-group-title"><div><span>01</span><div><h3>¿Qué quieres construir?</h3><p>Selecciona el punto de partida más cercano.</p></div></div></div><div class="project-choice-grid"><label class="choice-card"><input type="radio" name="quoteProject" value="5000" data-name="Landing Page Essential" checked><span class="choice-surface"><strong>Landing Page</strong><small>Una página enfocada en presentar y convertir.</small><em>Desde $5,000</em></span></label><label class="choice-card"><input type="radio" name="quoteProject" value="8500" data-name="Sitio web empresarial"><span class="choice-surface"><strong>Sitio empresarial</strong><small>Varias secciones para una presencia completa.</small><em>Desde $8,500</em></span></label><label class="choice-card"><input type="radio" name="quoteProject" value="12000" data-name="Landing + CRM personalizado"><span class="choice-surface"><strong>Landing + CRM</strong><small>Captación y seguimiento de prospectos.</small><em>Desde $12,000</em></span></label><label class="choice-card"><input type="radio" name="quoteProject" value="10000" data-name="Catálogo administrable"><span class="choice-surface"><strong>Catálogo</strong><small>Productos editables y solicitudes por contacto.</small><em>Desde $10,000</em></span></label><label class="choice-card"><input type="radio" name="quoteProject" value="15000" data-name="Catálogo con pedidos"><span class="choice-surface"><strong>Catálogo + pedidos</strong><small>Carrito o flujo organizado de solicitudes.</small><em>Desde $15,000</em></span></label><label class="choice-card"><input type="radio" name="quoteProject" value="25000" data-name="Sistema web personalizado"><span class="choice-surface"><strong>Sistema web</strong><small>Procesos, usuarios y módulos hechos a medida.</small><em>Desde $25,000</em></span></label></div></div><div class="quote-group"><div class="quote-group-title"><div><span>02</span><div><h3>Define el alcance inicial</h3><p>Estos factores ajustan el tamaño de la solución.</p></div></div></div><div class="config-grid"><div class="config-field"><label for="complexity">Personalización</label><select id="complexity"><option value="0" data-label="Base">Base</option><option value="2500" data-label="Intermedia">Intermedia +$2,500</option><option value="6000" data-label="Avanzada">Avanzada +$6,000</option></select></div><div class="config-field"><label for="users">Usuarios o roles</label><select id="users"><option value="0" data-label="Sin usuarios internos">Sin usuarios internos</option><option value="2500" data-label="1 a 3 roles">1 a 3 roles +$2,500</option><option value="5500" data-label="4 a 10 roles">4 a 10 roles +$5,500</option><option value="9500" data-label="Más de 10 roles">Más de 10 +$9,500</option></select></div><div class="config-field"><label for="delivery">Prioridad</label><select id="delivery"><option value="0" data-label="Tiempo estándar">Tiempo estándar</option><option value="3000" data-label="Entrega prioritaria">Entrega prioritaria +$3,000</option></select></div></div></div><div class="quote-group"><div class="quote-group-title"><div><span>03</span><div><h3>Funciones adicionales</h3><p>Activa solo lo que realmente necesita tu proyecto.</p></div></div></div><div class="feature-grid"><label class="feature-card"><input type="checkbox" value="3500" data-feature="Panel administrable"><span><b>Panel administrable</b><small>Edita contenido sin tocar código.</small></span><em>+$3,500</em></label><label class="feature-card"><input type="checkbox" value="2500" data-feature="Sitio bilingüe"><span><b>Español + inglés</b><small>Contenido y navegación bilingüe.</small></span><em>+$2,500</em></label><label class="feature-card"><input type="checkbox" value="4500" data-feature="Pagos en línea"><span><b>Pagos en línea</b><small>Integración inicial con pasarela.</small></span><em>+$4,500</em></label><label class="feature-card"><input type="checkbox" value="3500" data-feature="Reservaciones o citas"><span><b>Reservaciones o citas</b><small>Captura y gestión de solicitudes.</small></span><em>+$3,500</em></label><label class="feature-card"><input type="checkbox" value="4500" data-feature="Inventario básico"><span><b>Inventario básico</b><small>Existencias y disponibilidad.</small></span><em>+$4,500</em></label><label class="feature-card"><input type="checkbox" value="1500" data-feature="SEO inicial"><span><b>SEO inicial</b><small>Metadatos y configuración esencial.</small></span><em>+$1,500</em></label></div></div></div><aside class="quote-summary"><span class="live-badge">Estimación en vivo</span><h3 id="selectedSolution">Landing Page Essential</h3><p>Resumen preliminar del alcance seleccionado.</p><div class="quote-breakdown"><div><span>Solución base</span><strong id="basePrice">$5,000 MXN</strong></div><div><span>Configuración</span><strong id="configSummary">Base</strong></div><div><span>Adicionales</span><strong id="extrasSummary">Ninguno</strong></div></div><span class="result-label">Rango estimado</span><strong class="result-price" id="estimate">$5,000–$6,000 MXN</strong><div class="timeline-row"><span>◷</span><span id="timeline">Tiempo estimado: 1 a 2 semanas</span></div><div class="summary-includes"><span>Diseño responsive</span><span>Pruebas</span><span>Publicación</span><span>Soporte inicial</span></div><a id="quoteWhatsapp" class="button primary" href="#" target="_blank" rel="noopener">Enviar estimación por WhatsApp</a><small class="quote-note">Esta herramienta no genera una cotización contractual. El precio final depende del alcance validado, contenido, infraestructura y servicios externos.</small></aside></div></div></section>
 <section class="section" id="contacto"><div class="container"><div class="contact-wrap"><div><p class="eyebrow">HABLEMOS</p><h2 data-es="¿Tienes un proyecto en mente?" data-en="Have a project in mind?">¿Tienes un proyecto en mente?</h2><p data-es="Cuéntame qué necesita tu negocio y construimos una solución con alcance, precio y entregables claros." data-en="Tell me what your business needs and we'll define a clear scope, price and deliverables.">Cuéntame qué necesita tu negocio y construimos una solución con alcance, precio y entregables claros.</p></div><div class="contact-actions"><a class="button primary" href="https://wa.me/528991202450" target="_blank">WhatsApp</a><a class="button" href="https://instagram.com/adtech_of" target="_blank">@adtech_of</a></div></div></div></section></main>
 <footer><div class="container footer-row"><strong>ADTech · Augusto Ramírez</strong><span>© 2026 · Diseñado y desarrollado en México</span></div></footer>
-<div class="modal" id="galleryModal" aria-hidden="true"><div class="modal-box"><div class="modal-head"><div><p class="eyebrow">GALERÍA DEL PROYECTO</p><h2 id="modalTitle" style="margin:0"></h2></div><button id="closeModal" aria-label="Cerrar">×</button></div><span class="zoom-hint">Toca la captura para acercar o alejar.</span><img id="modalMain" class="modal-main" src="" alt="Captura principal" title="Toca para cambiar el zoom"><div class="modal-thumbs" id="modalThumbs"></div></div></div>
+<div class="modal" id="galleryModal" aria-hidden="true"><div class="modal-box"><div class="modal-head"><div><p class="eyebrow">GALERÍA DEL PROYECTO</p><h2 id="modalTitle" style="margin:0"></h2></div><button id="closeModal" aria-label="Cerrar">×</button></div><img id="modalMain" class="modal-main" src="" alt="Captura principal"><div class="modal-thumbs" id="modalThumbs"></div></div></div>
 <script>
 const root=document.documentElement, header=document.getElementById('header');
 addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>20));
-const menuButton=document.querySelector('.menu'),navLinks=document.querySelector('.nav-links');menuButton.setAttribute('aria-expanded','false');menuButton.addEventListener('click',()=>{const open=navLinks.classList.toggle('mobile-open');menuButton.setAttribute('aria-expanded',String(open));menuButton.textContent=open?'×':'☰'});navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{navLinks.classList.remove('mobile-open');menuButton.setAttribute('aria-expanded','false');menuButton.textContent='☰'}));
 document.querySelector('.theme').addEventListener('click',()=>root.dataset.theme=root.dataset.theme==='dark'?'light':'dark');
 let lang='es';document.querySelector('.language').addEventListener('click',()=>{lang=lang==='es'?'en':'es';document.querySelector('.language-label').textContent=lang.toUpperCase();document.querySelectorAll('[data-es]').forEach(el=>{const value=el.dataset[lang]; if(value!==undefined) el.innerHTML=value;});updateQuote();});
 const projectChoices=[...document.querySelectorAll('input[name="quoteProject"]')],complexity=document.getElementById('complexity'),users=document.getElementById('users'),delivery=document.getElementById('delivery'),featureInputs=[...document.querySelectorAll('.feature-card input')],estimate=document.getElementById('estimate'),timeline=document.getElementById('timeline'),quoteWhatsapp=document.getElementById('quoteWhatsapp'),selectedSolution=document.getElementById('selectedSolution'),basePrice=document.getElementById('basePrice'),configSummary=document.getElementById('configSummary'),extrasSummary=document.getElementById('extrasSummary');
@@ -206,7 +41,6 @@ function selectedOptionLabel(select){return select.options[select.selectedIndex]
 function updateQuote(){const project=projectChoices.find(input=>input.checked)||projectChoices[0];const base=Number(project.value);const configTotal=Number(complexity.value)+Number(users.value)+Number(delivery.value);const selectedFeatures=featureInputs.filter(input=>input.checked);const extrasTotal=selectedFeatures.reduce((sum,input)=>sum+Number(input.value),0);const minimum=roundUp(base+configTotal+extrasTotal);const maximum=roundUp(minimum*1.18);const featureNames=selectedFeatures.map(input=>input.dataset.feature);selectedSolution.textContent=project.dataset.name;basePrice.textContent=`$${money(base)} MXN`;configSummary.textContent=[selectedOptionLabel(complexity),selectedOptionLabel(users),selectedOptionLabel(delivery)].filter(Boolean).join(' · ');extrasSummary.textContent=featureNames.length?`${featureNames.length} seleccionada${featureNames.length>1?'s':''}`:'Ninguno';estimate.textContent=`$${money(minimum)}–$${money(maximum)} MXN`;let weeks=minimum<9000?'1 a 2 semanas':minimum<17000?'2 a 4 semanas':minimum<28000?'4 a 7 semanas':'6 a 10 semanas';if(Number(delivery.value)>0)weeks=minimum<17000?'1 a 3 semanas':'3 a 6 semanas';timeline.textContent=(lang==='es'?'Tiempo estimado: ':'Estimated delivery: ')+weeks;const lines=[`Hola Augusto, usé el cotizador de ADTech.`,`Proyecto: ${project.dataset.name}.`,`Rango estimado: $${money(minimum)}–$${money(maximum)} MXN.`,`Configuración: ${configSummary.textContent}.`,featureNames.length?`Funciones: ${featureNames.join(', ')}.`:'',`Me gustaría revisar el alcance y recibir una cotización formal.`].filter(Boolean);quoteWhatsapp.href='https://wa.me/528991202450?text='+encodeURIComponent(lines.join('\n'))}
 document.querySelectorAll('#cotizador input,#cotizador select').forEach(el=>el.addEventListener('change',updateQuote));updateQuote();
 const modal=document.getElementById('galleryModal'),modalMain=document.getElementById('modalMain'),modalThumbs=document.getElementById('modalThumbs'),modalTitle=document.getElementById('modalTitle');
-document.querySelectorAll('.open-gallery').forEach(btn=>btn.addEventListener('click',()=>{let slug=btn.dataset.project,title=btn.dataset.title,count=Number(btn.dataset.count||3);modalTitle.textContent=title;modalThumbs.innerHTML='';modalMain.classList.toggle('zoomed',matchMedia('(max-width:640px)').matches);Array.from({length:count},(_,i)=>i+1).forEach((n,i)=>{let src=`assets/projects/${slug}/0${n}.png`;if(i===0)modalMain.src=src;let b=document.createElement('button'),im=document.createElement('img');if(i===0)b.classList.add('active');im.src=src;im.alt=`${title} captura ${n}`;b.appendChild(im);b.addEventListener('click',()=>{modalMain.src=src;modalMain.classList.toggle('zoomed',matchMedia('(max-width:640px)').matches);modalThumbs.querySelectorAll('button').forEach(item=>item.classList.remove('active'));b.classList.add('active')});modalThumbs.appendChild(b)});modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}));
-modalMain.addEventListener('click',()=>modalMain.classList.toggle('zoomed'));
+document.querySelectorAll('.open-gallery').forEach(btn=>btn.addEventListener('click',()=>{let slug=btn.dataset.project,title=btn.dataset.title,count=Number(btn.dataset.count||3);modalTitle.textContent=title;modalThumbs.innerHTML='';Array.from({length:count},(_,i)=>i+1).forEach((n,i)=>{let src=`assets/projects/${slug}/0${n}.png`;if(i===0)modalMain.src=src;let b=document.createElement('button'),im=document.createElement('img');im.src=src;im.alt=`${title} captura ${n}`;b.appendChild(im);b.addEventListener('click',()=>modalMain.src=src);modalThumbs.appendChild(b)});modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}));
 function closeModal(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''}document.getElementById('closeModal').addEventListener('click',closeModal);modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 </script></body></html>
