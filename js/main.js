@@ -37,18 +37,18 @@ const projects = {
       { src: "assets/projects/lumbre/03.png", alt: "Reservaciones de Lumbre", caption: "Flujo de reservación y contacto" }
     ]
   },
-  altura: {
-    label: "Concepto digital · Inmobiliaria",
-    title: "Altura Inmobiliaria",
-    intro: "Concepto web para una inmobiliaria que combina una estética cálida y aspiracional con una presentación clara de propiedades.",
-    challenge: "Diferenciar la marca inmobiliaria y organizar la información para que un prospecto pueda descubrir propiedades y contactar a un asesor con facilidad.",
-    solution: "Se diseñó una landing page con propuesta de valor, propiedades destacadas, navegación clara y puntos de conversión orientados a generar prospectos.",
-    role: "Estrategia visual, concepto de marca, estructura de contenido, experiencia de usuario y desarrollo frontend.",
-    result: "Una propuesta adaptable a una inmobiliaria real y preparada para crecer hacia catálogo, filtros, fichas de propiedad y CRM.",
+  atelier: {
+    label: "Concepto digital · Arquitectura",
+    title: "Atelier Norte",
+    intro: "Concepto web editorial para un estudio de arquitectura, construcción e interiorismo con enfoque contemporáneo y una presentación visual de alto nivel.",
+    challenge: "Transmitir la calidad del despacho, organizar sus servicios y mostrar el trabajo realizado sin saturar la experiencia ni restarle protagonismo a las imágenes.",
+    solution: "Se desarrolló una landing page responsiva con portada inmersiva, servicios, proyectos destacados, proceso de supervisión y un flujo directo para solicitar una cotización.",
+    role: "Conceptualización, arquitectura de información, diseño visual, experiencia de usuario y desarrollo frontend.",
+    result: "Una presencia digital preparada para presentar Casa Patio Norte, Estudio Cobalto y otros proyectos con mayor autoridad y facilitar nuevas solicitudes.",
     screenshots: [
-      { src: "assets/projects/altura/01.png", alt: "Portada de Altura Inmobiliaria", caption: "Landing page y propuesta de valor" },
-      { src: "assets/projects/altura/02.png", alt: "Catálogo de propiedades", caption: "Exploración de propiedades destacadas" },
-      { src: "assets/projects/altura/03.png", alt: "Contacto inmobiliario", caption: "Captación de prospectos y contacto" }
+      { src: "assets/projects/atelier/01.png", alt: "Portada de Atelier Norte", caption: "Bienvenida y presentación del estudio" },
+      { src: "assets/projects/atelier/02.png", alt: "Servicios y proyectos de Atelier Norte", caption: "Servicios y portafolio arquitectónico" },
+      { src: "assets/projects/atelier/03.png", alt: "Proceso y contacto de Atelier Norte", caption: "Proceso de trabajo y solicitud de proyecto" }
     ]
   }
 };
