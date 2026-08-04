@@ -56,6 +56,33 @@ header .nav{border:1px solid var(--line);background:color-mix(in srgb,var(--pane
 .ready-model-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.ready-model-top>strong{font:850 1rem var(--display);color:var(--accent)}
 .ready-model-card h3{font:800 1.42rem var(--display);letter-spacing:-.04em;margin:18px 0 9px}.ready-model-card>p{color:var(--muted);line-height:1.62;margin:0;min-height:104px}
 .ready-stack{height:205px;margin-top:19px}.ready-model-actions{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:19px}.ready-model-actions .open-gallery{margin:0}.ready-model-actions>a{font-size:.8rem;font-weight:800;color:var(--muted)}.ready-model-actions>a:hover{color:var(--text)}
+
+.ready-rights-notice{
+  margin-top:18px;
+  padding:16px 18px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:color-mix(in srgb,var(--bg) 72%,var(--panel));
+  display:flex;
+  align-items:flex-start;
+  gap:13px;
+  color:var(--muted);
+  font-size:.78rem;
+  line-height:1.6
+}
+.ready-rights-notice strong{color:var(--text)}
+.ready-rights-icon{
+  width:34px;
+  height:34px;
+  flex:0 0 auto;
+  display:grid;
+  place-items:center;
+  border-radius:11px;
+  background:var(--accent-soft);
+  color:var(--accent);
+  font:900 .9rem var(--display)
+}
+
 .ready-software-note{margin-top:18px;border:1px solid var(--line);border-radius:24px;background:color-mix(in srgb,var(--panel) 82%,var(--accent-soft));padding:20px;display:flex;align-items:center;justify-content:space-between;gap:24px}.ready-software-note>div{display:flex;align-items:center;gap:16px}.ready-software-note .lock{flex:0 0 auto}.ready-software-note strong{display:block;font:800 1rem var(--display);margin-bottom:5px}.ready-software-note p{color:var(--muted);line-height:1.55;margin:0;font-size:.86rem}
 @media(max-width:980px){.ready-launchbar{grid-template-columns:auto 1fr}.ready-launchbar .button{grid-column:1/-1}.ready-model-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ready-model-card:last-child{grid-column:1/-1}.ready-model-card>p{min-height:0}.ready-software-note{align-items:flex-start}.ready-software-note>div{align-items:flex-start}}
 @media(max-width:640px){.ready-launchbar{grid-template-columns:1fr;padding:18px}.ready-launch-number{width:54px;height:54px}.ready-model-grid{grid-template-columns:1fr}.ready-model-card:last-child{grid-column:auto}.ready-model-card{padding:18px}.ready-stack{height:190px}.ready-software-note{flex-direction:column}.ready-software-note .button{width:100%}}
@@ -110,6 +137,14 @@ header .nav{border:1px solid var(--line);background:color-mix(in srgb,var(--pane
 <div class="project-stack ready-stack"><img alt="NEXA Bruma - Bruma Café captura 1" src="assets/ready/nexa-bruma/01.png" onerror="this.onerror=null;this.src='assets/ready/fallback.png'"/><img alt="NEXA Bruma - Bruma Café captura 2" src="assets/ready/nexa-bruma/02.png" onerror="this.onerror=null;this.src='assets/ready/fallback.png'"/><img alt="NEXA Bruma - Bruma Café captura 3" src="assets/ready/nexa-bruma/03.png" onerror="this.onerror=null;this.src='assets/ready/fallback.png'"/></div>
 <div class="ready-model-actions"><button class="open-gallery" data-en="View 3 screenshots →" data-es="Ver 3 capturas →" data-folder="assets/ready/nexa-bruma" data-project="nexa-bruma" data-title="NEXA Bruma - Bruma Café">Ver 3 capturas →</button><a data-en="Request model" data-es="Solicitar modelo" href="https://wa.me/528991202450?text=Hola%20Augusto%2C%20me%20interesa%20la%20landing%20NEXA%20Bruma%20-%20Bruma%20Caf%C3%A9%20por%20%243%2C500%20MXN" rel="noopener" target="_blank">Solicitar modelo</a></div>
 </article>
+</div>
+
+<div class="ready-rights-notice" role="note">
+  <span class="ready-rights-icon" aria-hidden="true">©</span>
+  <div>
+    <strong data-en="Copyright and intellectual property notice" data-es="Aviso de derechos de autor y propiedad intelectual">Aviso de derechos de autor y propiedad intelectual</strong><br/>
+    <span data-en="All ADTech Ready designs are protected by copyright and intellectual property rights. Their reproduction, distribution, modification, resale or commercial use without ADTech's express authorization is not permitted." data-es="Todos los diseños ADTech Ready están protegidos por derechos de autor y propiedad intelectual. No está permitida su reproducción, distribución, modificación, reventa o uso comercial sin autorización expresa de ADTech.">Todos los diseños ADTech Ready están protegidos por derechos de autor y propiedad intelectual. No está permitida su reproducción, distribución, modificación, reventa o uso comercial sin autorización expresa de ADTech.</span>
+  </div>
 </div>
 
 <div class="ready-software-note">
